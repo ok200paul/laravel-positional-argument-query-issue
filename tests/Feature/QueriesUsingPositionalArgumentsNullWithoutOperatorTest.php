@@ -107,7 +107,7 @@ class QueriesUsingPositionalArgumentsNullWithoutOperatorTest extends TestCase
     #[Test]
     public function testFungGetArgsReturnsOperator(): void
     {
-        $args = $this->testFuncWhere(
+        $args = $this->funcWhere(
             column: 'a', value: 'c'
         );
 
@@ -118,7 +118,7 @@ class QueriesUsingPositionalArgumentsNullWithoutOperatorTest extends TestCase
     #[Test]
     public function testFungGetArgsReturnsOperatorWhenSpecified(): void
     {
-        $args = $this->testFuncWhere(
+        $args = $this->funcWhere(
             column: 'a',
             operator: '=',
             value: 'c'
@@ -128,7 +128,7 @@ class QueriesUsingPositionalArgumentsNullWithoutOperatorTest extends TestCase
 
     }
 
-    public function testFuncWhere($column, $operator = null, $value = null, $boolean = 'and'){
+    public function funcWhere($column, $operator = null, $value = null, $boolean = 'and'){
 
         return func_get_args();
     }
