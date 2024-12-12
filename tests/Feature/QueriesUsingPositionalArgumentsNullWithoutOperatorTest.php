@@ -5,6 +5,7 @@ namespace Tests\Feature;
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 use App\Models\UserPost;
+use App\Models\UserPostComment;
 use Illuminate\Support\Facades\Log;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -82,7 +83,7 @@ class QueriesUsingPositionalArgumentsNullWithoutOperatorTest extends TestCase
     {
         $user = User::first();
 
-        $userPosts = UserPost::where(
+        $userPosts = UserPostComment::where(
             column: 'id',
             value: 1,
         )->get();
@@ -90,13 +91,13 @@ class QueriesUsingPositionalArgumentsNullWithoutOperatorTest extends TestCase
 
         $count = UserPost::count();
 
-        Log::info(UserPost::where(
+        Log::info(UserPostComment::where(
             column: 'id',
             value: 1,
         )->toSql());
 
         $this->assertCount(
-            expectedCount: $count,
+            expectedCount: 1,
             haystack: $userPosts
         );
 
